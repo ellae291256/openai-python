@@ -105,8 +105,14 @@ from .response_mcp_list_tools_failed_event import ResponseMcpListToolsFailedEven
 from .response_audio_transcript_delta_event import (
     ResponseAudioTranscriptDeltaEvent as ResponseAudioTranscriptDeltaEvent,
 )
+from .response_reasoning_summary_done_event import (
+    ResponseReasoningSummaryDoneEvent as ResponseReasoningSummaryDoneEvent,
+)
 from .response_mcp_call_arguments_done_event import (
     ResponseMcpCallArgumentsDoneEvent as ResponseMcpCallArgumentsDoneEvent,
+)
+from .response_reasoning_summary_delta_event import (
+    ResponseReasoningSummaryDeltaEvent as ResponseReasoningSummaryDeltaEvent,
 )
 from .response_computer_tool_call_output_item import (
     ResponseComputerToolCallOutputItem as ResponseComputerToolCallOutputItem,
