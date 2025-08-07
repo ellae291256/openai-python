@@ -2918,7 +2918,7 @@ def _make_tools(tools: Iterable[ParseableToolParam] | NotGiven) -> List[ToolPara
 
     converted_tools: List[ToolParam] = []
     for tool in tools:
-        if tool["type"] != "function":
+        if tool.get("type") != "function":
             converted_tools.append(tool)
             continue
 
