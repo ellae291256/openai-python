@@ -2919,7 +2919,11 @@ def _make_tools(tools: Iterable[ParseableToolParam] | NotGiven) -> List[ToolPara
     converted_tools: List[ToolParam] = []
     for tool in tools:
         if tool["type"] != "function":
-            converted_tools.append(tool)
+            if "custom" in tool:
+                raise TypeError(
+                    "Chat Completions custom tool shapes are not supported by the Responses API; use the Responses `CustomToolParam` shape instead"
+                )
+            converted_tools.append(cast(ToolParam, tool))  # pyright: ignore[reportUnnecessaryCast]
             continue
 
         if "function" not in tool:
