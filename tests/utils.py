@@ -1,29 +1,29 @@
 from __future__ import annotations
 
+import contextlib
+import inspect
 import io
 import os
-import inspect
 import traceback
-import contextlib
-from typing import Any, TypeVar, Iterator, ForwardRef, Sequence, cast
 from datetime import date, datetime
-from typing_extensions import Literal, get_args, get_origin, assert_type
+from typing import Any, ForwardRef, Iterator, Sequence, TypeVar, cast
 
 import rich
+from typing_extensions import Literal, assert_type, get_args, get_origin
 
-from openai._types import Omit, NoneType
+from openai._compat import PYDANTIC_V2, field_outer_type, get_model_fields
+from openai._models import BaseModel
+from openai._types import NoneType, Omit
 from openai._utils import (
+    extract_type_arg,
+    is_annotated_type,
     is_dict,
     is_list,
     is_list_type,
-    is_union_type,
-    extract_type_arg,
     is_sequence_type,
-    is_annotated_type,
     is_type_alias_type,
+    is_union_type,
 )
-from openai._compat import PYDANTIC_V2, field_outer_type, get_model_fields
-from openai._models import BaseModel
 
 BaseModelT = TypeVar("BaseModelT", bound=BaseModel)
 
